@@ -1,0 +1,59 @@
+@navbarHeight: 60px;
+@footerHeight: 50px;
+
+@textHeavy: #333;
+@textMiddle: #60606d;
+@textSmall: #999;
+@textLight: #fff;
+
+@borderColor: #eaeef1;
+
+@colorSilver: #f1f1f1;  /* 背景色*/
+@colorGreyLight: #e0e0e0;
+@colorGrey: #b0b0b0;
+@colorGreyHeavy: #616161;
+@colorDark: #333;
+@colorPrimary: #545ca6;
+@colorWarning: #ffac13;
+@colorSuccess: #83c44e;
+@colorDanger: #e53935;
+@colorInfo: #2196f3;
+
+@colorHeavy: #221f42;
+@colorHeaveDark: #1B1935;
+
+@radiusSize: 4px;
+
+
+/*===== 响应式相关变量 =====*/
+@prefix: b8; // 前缀名称
+@container: container; // 容器名
+@row-name: row; // 行名
+@columns-name: col; // 列名
+@columns-padding: 10px; // 列边距
+@grid-count: 60; // 栅格数（把屏幕分为12份）
+
+// 响应对应尺寸
+@pageMaxWidthXs: 100%;
+@pageMaxWidthSm: 860px;
+@pageMaxWidthMd: 1140px;
+@pageMaxWidthLg: 1280px;
+
+@screen-xs: 800px;
+@screen-sm: 1024px;
+@screen-md: 1334px;
+
+@pageStaticWidth: 1226px; // 页面固定宽度
+
+
+/*===== 常用的 less 混合 =====*/
+.border-radius (@radius: 5px) {
+    border-radius: @radius;
+}
+
+// 阴影
+.box-shadow (@x: 0, @y: 15px, @blur: 30px, @insert: 0, @color: rgba(0,0,0,.1)) {
+    box-shadow: @arguments;
+    -moz-box-shadow: @arguments;
+    -webkit-box-shadow: @arguments;
+}

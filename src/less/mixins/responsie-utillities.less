@@ -1,0 +1,139 @@
+
+/*===== 定义元素显示的方式 =====*/
+.responsive-visibility() {
+    display: block !important;
+    table&  { display: table !important; }
+    tr&     { display: table-row !important; }
+    th&,
+    td&     { display: table-cell !important; }
+}
+
+/*===== 定义元素隐藏的方式 =====*/
+.responsive-invisibility() {
+    display: none !important;
+}
+
+/*===== 默认影藏 =====*/
+.visible-xs,
+.visible-xs-block,
+.visible-xs-inline,
+.visible-xs-inline-block,
+.visible-sm,
+.visible-sm-block,
+.visible-sm-inline,
+.visible-sm-inline-block,
+.visible-md,
+.visible-md-block,
+.visible-md-inline,
+.visible-md-inline-block,
+.visible-lg,
+.visible-lg-block,
+.visible-lg-inline,
+.visible-lg-inline-block {
+    display: none !important;
+}
+
+.visible-xs {
+    @media (max-width: @screen-xs) {
+        .responsive-visibility();
+    }
+}
+.visible-xs-block {
+    @media (max-width: @screen-xs) {
+        display: block !important;
+    }
+}
+.visible-xs-inline {
+    @media (max-width: @screen-xs) {
+        display: inline !important;
+    }
+}
+.visible-xs-inline-block {
+    @media (max-width: @screen-xs) {
+        display: inline-block !important;
+    }
+}
+
+.visible-sm {
+    @media (min-width: @screen-xs) and (max-width: @screen-sm) {
+        .responsive-visibility();
+    }
+}
+.visible-sm-block {
+    @media (min-width: @screen-xs) and (max-width: @screen-sm) {
+        display: block !important;
+    }
+}
+.visible-sm-inline {
+    @media (min-width: @screen-xs) and (max-width: @screen-sm) {
+        display: inline !important;
+    }
+}
+.visible-sm-inline-block {
+    @media (min-width: @screen-xs) and (max-width: @screen-sm) {
+        display: inline-block !important;
+    }
+}
+
+.visible-md {
+    @media (min-width: @screen-sm) and (max-width: @screen-md) {
+        .responsive-visibility();
+    }
+}
+.visible-md-block {
+    @media (min-width: @screen-sm) and (max-width: @screen-md) {
+        display: block !important;
+    }
+}
+.visible-md-inline {
+    @media (min-width: @screen-sm) and (max-width: @screen-md) {
+        display: inline !important;
+    }
+}
+.visible-md-inline-block {
+    @media (min-width: @screen-sm) and (max-width: @screen-md) {
+        display: inline-block !important;
+    }
+}
+
+.visible-lg {
+    @media (min-width: @screen-md) {
+        .responsive-visibility();
+    }
+}
+.visible-lg-block {
+    @media (min-width: @screen-md) {
+        display: block !important;
+    }
+}
+.visible-lg-inline {
+    @media (min-width: @screen-md) {
+        display: inline !important;
+    }
+}
+.visible-lg-inline-block {
+    @media (min-width: @screen-md) {
+        display: inline-block !important;
+    }
+}
+
+.hidden-xs {
+    @media (max-width: @screen-xs) {
+        .responsive-invisibility();
+    }
+}
+.hidden-sm {
+    @media (min-width: @screen-xs) and (max-width: @screen-sm) {
+        .responsive-invisibility();
+    }
+}
+.hidden-md {
+    @media (min-width: @screen-sm) and (max-width: @screen-md) {
+        .responsive-invisibility();
+    }
+}
+.hidden-lg {
+    @media (min-width: @screen-md) {
+        .responsive-invisibility();
+    }
+}

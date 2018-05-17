@@ -1,0 +1,95 @@
+
+
+/* -------------------- 页面样式 begin -------------------- */
+
+/* nav-bar */
+.header {
+    background-color: #fff;
+    height: @navbarHeight;
+    font-size: 0;
+    .brand {
+        display: inline-block;
+        height: @navbarHeight;
+        width: @navbarHeight;
+        background: no-repeat transparent url(../../dist/img/logo.png) center left;
+        background-size: 75%;
+    }
+    .nav-list-pc {
+        .nav-list-item {
+            position: relative;
+            display: inline-block;
+
+            &:after {
+                content: '';
+                position: absolute;
+                z-index: 0;
+                bottom: 20px;
+                left: 39px;
+                right: 39px;
+                height: 0;
+                background-color: #fcd43c;
+                transition: height .3s ease;
+            }
+            &:hover:after {
+                height: 8px;
+            }
+        }
+        .nav-link {
+            position: relative;
+            z-index: 1;
+            padding: 0 40px;
+            display: block;
+            font-size: 14px;
+            color: #333;
+            line-height: @navbarHeight;
+        }
+        .active:after {
+            height: 8px;
+        }
+    }
+    .nav-list-phone {
+        background-color: #fff;
+        display: none;
+        .nav-link {
+            position: relative;
+            z-index: 1;
+            display: block;
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+            line-height: @navbarHeight;
+            border-top: 1px solid #f3f3f3;
+        }
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 26px;
+        height: @navbarHeight;
+        width: @navbarHeight;
+        text-align: center;
+        line-height: @navbarHeight;
+    }
+    .nav-menu:hover + .nav-list-phone {
+        display: block;
+    }
+
+}
+
+/*
+ * footer 样式
+ */
+ .footer {
+    background-color: rgba(0,0,0,.5);
+    height: 100%;
+ }
+ .footer p {
+    color: #fff;
+ }
+
+
+/* -------------------- 页面样式 end -------------------- */
+
+
