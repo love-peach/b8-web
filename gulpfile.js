@@ -6,7 +6,8 @@
 
     // 引入组件
     var less = require('gulp-less'),               // less
-        minifyCSS = require('gulp-minify-css'),    // css压缩
+        cssMin = require('gulp-clean-css'),        // css压缩
+        cssVer = require('gulp-make-css-url-version'), // css 引用文件添加 MD5
         autoprefix = require('gulp-autoprefixer'), // 自动补齐前缀
         jshint = require('gulp-jshint'),           // js检测
         uglify = require('gulp-uglify'),           // js压缩
@@ -16,7 +17,10 @@
         imagemin = require('gulp-imagemin'),       // 图片压缩
         pngquant = require('imagemin-pngquant'),   //深度压缩png图片的imagemin插件
         changed = require('gulp-changed'),         // 过滤改动的文件
-        clean = require('gulp-clean');             // 清空文件夹
+        browserSync = require('browser-sync'),     // 自动刷新浏览器，代理
+        clean = require('gulp-clean'),             // 清空文件夹
+        runSequence = require('run-sequence');     // 任务队列
+
 
     // 定义路径对象
     var srcRoot = 'src/';                            // 源目录文件夹 ./表示当前目录,这里没有设置./是因为需要监听新增的图片
@@ -106,40 +110,19 @@
             .pipe(changed(cssDest))
             .pipe(less())
             .pipe(autoprefix())
-            .pipe(gulp.dest(cssDest))
-    });
-
-    gulp.task('cssMin',['sprite'], function () {
-        var cssSrc = paths.src.less + 'style.less';
-        var cssDest = paths.dist.css;
-
-        return gulp.src(cssSrc)
-            .pipe(changed(cssDest))
-            .pipe(less())
-            .pipe(autoprefix())
+            .pipe(cssVer())
+            .pipe(cssMin({
+                advanced: false, //类型：Boolean 默认：true [是否开启高级优化（合并选择器等）]
+                compatibility: 'ie7', //保留ie7及以下兼容写法 类型：String 默认：''or'*' [启用兼容模式； 'ie7'：IE7兼容模式，'ie8'：IE8兼容模式，'*'：IE9+兼容模式]
+                keepBreaks: true, //类型：Boolean 默认：false [是否保留换行]
+                keepSpecialComments: '*' //保留所有特殊前缀 当你用autoprefixer生成的浏览器前缀，如果不加这个参数，有可能将会删除你的部分前缀
+            }))
             .pipe(rename({ suffix: '.min' }))
-            .pipe(minifyCSS(
-                {
-                    advanced: false,
-                    aggressiveMerging: false
-                }))
             .pipe(gulp.dest(cssDest))
     });
 
     // 检查、合并、压缩js文件
     gulp.task('js', function () {
-        var jsSrc = paths.src.scripts + '**/*.js';
-        var jsDest = paths.dist.scripts;
-
-        return gulp.src(jsSrc)
-            .pipe(changed(jsDest))
-            // .pipe(jshint())
-            // .pipe(jshint.reporter('default'))
-            /*.pipe(concat('all.js'))*/
-            .pipe(gulp.dest(jsDest))
-    });
-
-    gulp.task('jsMin', function () {
         var jsSrc = paths.src.scripts + '**/*.js';
         var jsDest = paths.dist.scripts;
 
@@ -163,11 +146,23 @@
             .pipe(gulp.dest(fontDest))
     });
 
+    gulp.task('browser-sync', function () {
+        browserSync.init({
+            server: {
+                baseDir: "./"
+            },
+            files: ['index.html', distRoot + '**/*'],
+            browser: "google chrome",
+            notify: true,
+            port: 4000
+        });
+    });
+
     //定义监听任务
-    gulp.task('watch', ['default'], function () {
-        gulp.watch(paths.src.img + '**/*.+(jpeg|jpg|png|svg|gif|ico)', ['imgMin']);//此任务好像没有效果？ 原因：用 './xx' 开头作为当前路径开始，会导致无法监测到新增文件，所以直接省略掉 './' 即可。'./images/*' === 'images/*'
-        gulp.watch(paths.src.less + '**/*.less', ['cssMin']);
-        gulp.watch(paths.src.scripts + '*.js', ['jsMin']);
+    gulp.task('watch', function () {
+        gulp.watch(paths.src.img + '**/*.+(jpeg|jpg|png|svg|gif|ico)', ['img']);//此任务好像没有效果？ 原因：用 './xx' 开头作为当前路径开始，会导致无法监测到新增文件，所以直接省略掉 './' 即可。'./images/*' === 'images/*'
+        gulp.watch(paths.src.less + '**/*.less', ['css']);
+        gulp.watch(paths.src.scripts + '*.js', ['js']);
     });
 
     // 清空dist目录下的所有文件
@@ -177,12 +172,25 @@
     });
 
     // gulp命令默认启动的就是default认为,这里将clean任务作为依赖,也就是先执行一次clean任务,流程再继续.
-    gulp.task('default', ['clean'], function () {
-        gulp.start('imgMin', 'cssMin', 'jsMin', 'fonts');
+    gulp.task('default', function () {
+        runSequence(
+            'dev',
+            'watch',
+            'browser-sync'
+        );
+    });
+
+    gulp.task('dev', ['clean'], function() {
+        gulp.start('img', 'css', 'js', 'fonts');
     });
 
     //push时需要调用的任务，在build中调用
     gulp.task('build', ['clean'],  function () {
-        gulp.start('imgMin', 'cssMin', 'jsMin', 'fonts');
+        // 这里必须等图片压缩完再执行其他任务 因为图片压缩需要时间 后续的 css 任务可能找不到图片. 
+        runSequence(
+            'imgMin',
+            ['css', 'js', 'fonts']
+        );
+        // gulp.start('imgMin', 'css', 'js', 'fonts');
     });
 })();
