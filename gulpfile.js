@@ -42,7 +42,7 @@
 
     //拷贝图片，开发环境不需要每次都压缩图片。之所以需要拷贝一次，是因为会执行clean任务。
     gulp.task('img', function () {
-        var imgSrc = paths.src.img + '**/*.+(jpeg|jpg|png|svg|gif|ico)';
+        var imgSrc = paths.src.img + '*.+(jpeg|jpg|png|svg|gif|ico)';
         var imgDest = paths.dist.img;
 
         return gulp.src(imgSrc)
@@ -52,14 +52,14 @@
 
     // 压缩图片。只在build任务中才压缩图片
     gulp.task('imgMin', function () {
-        var imgSrc = paths.src.img + '**/*.+(jpeg|jpg|png|svg|gif|ico)';
+        var imgSrc = paths.src.img + '*.+(jpeg|jpg|png|svg|gif|ico)';
         var imgDest = paths.dist.img;
 
         return gulp.src(imgSrc)
             .pipe(changed(imgDest))
             .pipe(imagemin({
                 optimizationLevel: 5,                     //类型：Number  默认：3  取值范围：0-7（优化等级）
-                progressive: false,                        //类型：Boolean 默认：false 无损压缩jpg图片
+                progressive: true,                        //类型：Boolean 默认：false 无损压缩jpg图片
                 interlaced: true,                         //类型：Boolean 默认：false 隔行扫描gif进行渲染
                 multipass: true,                          //类型：Boolean 默认：false 多次优化svg直到完全优化
                 svgoPlugins: [{removeViewBox: false}],    //不要移除svg的viewbox属性
@@ -68,8 +68,8 @@
             .pipe(gulp.dest(imgDest))
     });
     gulp.task('sprite', function () {
-        var spritSrc = paths.src.img + 'spirit/*.png';
-        var spritImgDest = paths.dist.img + "spirit/";
+        var spritSrc = paths.src.img + 'sprite/*.png';
+        var spritImgDest = paths.dist.img + "sprite/";
         var spritCssDest = paths.src.less;
 
         var spriteData = gulp.src(spritSrc)
@@ -181,12 +181,16 @@
     });
 
     gulp.task('dev', ['clean'], function() {
-        gulp.start('img', 'css', 'js', 'fonts');
+        runSequence(
+            'img',
+            'css',
+            ['js', 'fonts']
+        );
     });
 
     //push时需要调用的任务，在build中调用
     gulp.task('build', ['clean'],  function () {
-        // 这里必须等图片压缩完再执行其他任务 因为图片压缩需要时间 后续的 css 任务可能找不到图片. 
+        // 这里必须等图片压缩完再执行其他任务 因为图片压缩需要时间 后续的 css 任务可能找不到图片.
         runSequence(
             'imgMin',
             ['css', 'js', 'fonts']

@@ -36,10 +36,6 @@ hr {
     padding: 0;
 }
 
-img {
-    vertical-align: middle;
-}
-
 fieldset {
     border: 0;
     margin: 0;
@@ -62,6 +58,11 @@ p {
 a {
     text-decoration: none;
     color: currentColor;
+
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-select: none;
+    -moz-user-focus: none;
+    -moz-user-select: none;
 }
 
 // 通用样式
@@ -115,6 +116,13 @@ a {
  */
 .text-center {
     text-align: center;
+}
+
+/*
+ * 水平居右
+ */
+.text-right {
+    text-align: right;
 }
 
 /*

@@ -12,6 +12,16 @@
     <link rel="stylesheet" href="dist/css/style.min.css">
 </head>
 <body>
+
+    <!-- loading -->
+
+    <div id="js-loading-wrapper" class="loading-wrapper">
+        <div id="js-loading-box" class="loading-box" >
+            <img class="load-img" src="dist/img/loading.gif" alt="loading">
+            <p class="load-text text-center">Loading...</p>
+        </div>
+    </div>
+
     <!-- 页面内容 -->
     <div class="page-content">
 
@@ -57,6 +67,177 @@
                 </div>
             </div>
         </div>
+
+
+        <div id="jsHome" class="section-part section-part-home">
+            <div class="content-wrap">
+                <div class="text-wrap">
+                    <h1 class="text-top wow fadeInDownBig">MAKE MONEY</h1>
+                    <h1 class="text-bottom wow fadeInUp" data-wow-delay="1s">币8区块链专业数据团队，用数据赚钱</h1>
+                </div>
+                <div class="btn-wrap">
+                    <a class="btn wow pulse fadeIn" data-wow-duration="2s" data-wow-delay="1s" data-wow-iteration="infinite" href="JavaScript:;">加入社区</a>
+                    <img class="qrcode animated fadeInDownPart" src="dist/img/qrcode.png" alt="二维码">
+                </div>
+            </div>
+        </div>
+        <!-- 脚本: 页面一进来就让 #jsHome 铺满屏幕-->
+        <script>
+            var jsHome = document.getElementById('jsHome');
+            function setFullScreenHeight(ele, h, w) {
+                var height = h || window.innerHeight;
+                var width = w || window.innerWidth;
+                ele.style.height = height + 'px';
+                ele.style.width = width + 'px';
+            }
+            setFullScreenHeight(jsHome);
+            var timer;
+            window.onresize = function () {
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    setFullScreenHeight(jsHome);
+                }, 50)
+            };
+        </script>
+
+
+        <!-- 核心问题 -->
+        <div class="section-part section-part-issues">
+            <div class="b8-container">
+                <div class="section-title-wrap">
+                    <img class="section-title-icon" src="dist/img/icon_point.png" alt="">
+                    <h2 class="section-title">核心问题</h2>
+                    <span class="section-title-en">KEY ISSUES</span>
+                </div>
+                <div class="b8-row key-issues-list">
+                    <div class="b8-col-lg-4 b8-col-xs-12">
+                        <div class="issues-item wow fadeInUp">
+                            <img class="item-img" src="dist/img/issues_bit.png" alt="">
+                            <p class="item-text">选什么币</p>
+                        </div>
+                    </div>
+                    <div class="b8-col-lg-4 b8-col-xs-12">
+                        <div class="issues-item wow fadeInUp" data-wow-delay=".1s">
+                            <img class="item-img" src="dist/img/issues_buy.png" alt="">
+                            <p class="item-text">什么时候买</p>
+                        </div>
+                    </div>
+                    <div class="b8-col-lg-4 b8-col-xs-12">
+                        <div class="issues-item wow fadeInUp" data-wow-delay=".2s">
+                            <img class="item-img" src="dist/img/issues_sell.png" alt="">
+                            <p class="item-text">什么时候卖</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="absolute-text">KEY ISSUES</p>
+            <img class="absolute-img" src="dist/img/decoration_right.png" alt="">
+        </div>
+
+        <!-- 解决方案 -->
+        <div class="section-part section-part-solution">
+            <div class="b8-container">
+                <div class="section-title-wrap">
+                    <img class="section-title-icon" src="dist/img/icon_point.png" alt="">
+                    <h2 class="section-title">解决方案</h2>
+                    <span class="section-title-en">SOLUTION</span>
+                </div>
+                <img class="content-img" src="dist/img/section_solution.png" alt="解决方案">
+            </div>
+            <p class="absolute-text">SOLUTIONS</p>
+            <img class="absolute-img" src="dist/img/decoration_left.png" alt="">
+        </div>
+
+        <!-- 关于我们 -->
+        <div class="section-part section-part-about">
+            <div class="b8-container">
+                <div class="section-title-wrap">
+                    <img class="section-title-icon" src="dist/img/icon_point.png" alt="">
+                    <h2 class="section-title">关于我们</h2>
+                    <span class="section-title-en">ABOUT US</span>
+                </div>
+                <ul class="introduced-list">
+                    <li class="introduced-item item-odd">
+                        <div class="item-icon ">
+                            <i class="icon icon-icon_code"></i>
+                        </div>
+                        <p class="item-text">
+                            <strong>专业数据挖掘能力</strong>
+                            <span>强大的研发实力，在数据挖掘方面积累了多年的经验</span>
+                        </p>
+                    </li>
+                    <li class="introduced-item item-even">
+                        <div class="item-icon ">
+                            <i class="icon icon-icon_person"></i>
+                        </div>
+                        <p class="item-text">
+                            <strong>顶尖市场研究人员</strong>
+                            <span>顶级投行金融策略分析师，根据市场数据建立投资决策模型</span>
+                        </p>
+                    </li>
+                    <li class="introduced-item item-odd">
+                        <div class="item-icon ">
+                            <i class="icon icon-icon_team"></i>
+                        </div>
+                        <p class="item-text">
+                            <strong>丰富的行业资源</strong>
+                            <span>区块链相关行业顶尖人脉资源助力产品</span>
+                        </p>
+                    </li>
+                    <li class="introduced-item item-even">
+                        <div class="item-icon ">
+                            <i class="icon icon-icon_heart"></i>
+                        </div>
+                        <p class="item-text">
+                            <strong>产品初心</strong>
+                            <span>最重要的是我们的初心不变，时刻为用户创造价值而不断努力</span>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <p class="absolute-text">ABOUT US</p>
+            <img class="absolute-img" src="dist/img/decoration_right.png" alt="">
+        </div>
+
+        <!-- 加入社区 -->
+        <div class="section-part section-part-join">
+            <div class="b8-container">
+                <div class="section-title-wrap">
+                    <img class="section-title-icon" src="dist/img/icon_point.png" alt="">
+                    <h2 class="section-title">加入社区</h2>
+                    <span class="section-title-en">JOIN US</span>
+                </div>
+                <div class="b8-row join-content-wrap">
+                    <div class="b8-col-lg-7">
+                        <h3 class="join-preferential-title">您将获得</h3>
+                        <ul class="join-preferential">
+                            <li class="preferential-item">
+                                <img class="list-icon" src="dist/img/icon_point.png" alt="">
+                                <span>优先获得试用我们产品的机会</span>
+                            </li>
+                            <li class="preferential-item">
+                                <img class="list-icon" src="dist/img/icon_point.png" alt="">
+                                <span>第一时间获取市场交易策略及分析</span>
+                            </li>
+                            <li class="preferential-item">
+                                <img class="list-icon" src="dist/img/icon_point.png" alt="">
+                                <span>获得发展过程中token优先知情权</span>
+                            </li>
+                            <li class="preferential-item">
+                                <img class="list-icon" src="dist/img/icon_point.png" alt="">
+                                <span>与团队一起成长壮大的机会</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="b8-col-lg-5 text-right">
+                        <p class="absolute-text">JOIN US</p>
+                        <img class="img-qrcode" src="dist/img/qrcode.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="b8-container">
             <div class="content">
                 <div class="demo"></div>
@@ -77,6 +258,7 @@
     </div>
 
     <!-- 脚本 -->
+    <script src="dist/js/wow.min.js"></script>
     <script src="dist/js/main.min.js"></script>
 </body>
 </html>
