@@ -4,10 +4,15 @@ window.onload = function () {
         boxClass: 'wow',
         animateClass: 'animated',
         offset: 100,
-        mobile: true,
+        mobile: false,
         live: true
     });
     wow.init();
+
+    var throttleScroll = throttle(function () {
+        scrollHandler();
+    }, 0);
+    window.addEventListener('scroll', throttleScroll);
 };
 
 function initPage() {
@@ -18,6 +23,25 @@ function initPage() {
             objLoading.style.display = 'none';
         }, 500)
     }
+}
+var jsHeader = document.getElementById('jsHeader');
+function scrollHandler() {
+    var t = document.documentElement.scrollTop || document.body.scrollTop;
+    if(t > (window.innerHeight - 100)) {
+        jsHeader.classList.add('header-black');
+    } else {
+        jsHeader.classList.remove('header-black');
+    }
+}
+
+function throttle(fn, delay) {
+    var timer = null;
+    return function () {
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+            fn();
+        }, delay);
+    };
 }
 
 

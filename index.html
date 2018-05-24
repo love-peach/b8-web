@@ -25,43 +25,49 @@
     <!-- 页面内容 -->
     <div class="page-content">
 
-        <div class="header">
+        <div id="jsHeader" class="header">
             <div class="b8-container">
                 <a href="/" class="ir brand">某某网站logo</a>
                 <ul class="nav-list nav-list-pc hidden-xs fr">
                     <li class="nav-list-item active">
-                        <a class="nav-link" href="javascript:;">首页</a>
+                        <a class="nav-link" href="#jsHome">首页</a>
                     </li>
                     <li class="nav-list-item">
-                        <a class="nav-link" href="javascript:;">核心问题</a>
+                        <a class="nav-link" href="#keyIssues">核心问题</a>
                     </li>
                     <li class="nav-list-item">
-                        <a class="nav-link" href="javascript:;">解决方案</a>
+                        <a class="nav-link" href="#solution">解决方案</a>
                     </li>
                     <li class="nav-list-item">
-                        <a class="nav-link" href="javascript:;">关于我们</a>
+                        <a class="nav-link" href="#about">关于我们</a>
                     </li>
                     <li class="nav-list-item">
-                        <a class="nav-link" href="javascript:;">加入社区</a>
+                        <a class="nav-link" href="#joinUs">加入社区</a>
                     </li>
                 </ul>
                 <div class="b8-row visible-xs">
-                    <a class="nav-menu" href="javascript:;">三<i class="iconfont icon-menu"></i></a>
+                    <a class="nav-menu" href="javascript:;">
+                        <div class="icon-menu">
+                            <div class="icon-bar"></div>
+                            <div class="icon-bar"></div>
+                            <div class="icon-bar"></div>
+                        </div>
+                    </a>
                     <ul class="nav-list nav-list-phone">
                         <li class="nav-list-item active">
-                            <a class="nav-link" href="javascript:;">首页</a>
+                            <a class="nav-link" href="#jsHome">首页</a>
                         </li>
                         <li class="nav-list-item">
-                            <a class="nav-link" href="javascript:;">核心问题</a>
+                            <a class="nav-link" href="#keyIssues">核心问题</a>
                         </li>
                         <li class="nav-list-item">
-                            <a class="nav-link" href="javascript:;">解决方案</a>
+                            <a class="nav-link" href="#solution">解决方案</a>
                         </li>
                         <li class="nav-list-item">
-                            <a class="nav-link" href="javascript:;">关于我们</a>
+                            <a class="nav-link" href="#about">关于我们</a>
                         </li>
                         <li class="nav-list-item">
-                            <a class="nav-link" href="javascript:;">加入社区</a>
+                            <a class="nav-link" href="#joinUs">加入社区</a>
                         </li>
                     </ul>
                 </div>
@@ -69,6 +75,7 @@
         </div>
 
 
+        <!-- 首屏 -->
         <div id="jsHome" class="section-part section-part-home">
             <div class="content-wrap">
                 <div class="text-wrap">
@@ -76,7 +83,7 @@
                     <h1 class="text-bottom wow fadeInUp" data-wow-delay="1s">币8区块链专业数据团队，用数据赚钱</h1>
                 </div>
                 <div class="btn-wrap">
-                    <a class="btn wow pulse fadeIn" data-wow-duration="2s" data-wow-delay="1s" data-wow-iteration="infinite" href="JavaScript:;">加入社区</a>
+                    <a class="btn animated pulse fadeIn" style="animation-iteration-count: infinite;animation-duration: 2s" data-wow-duration="2s" data-wow-delay="1s" data-wow-iteration="infinite" href="JavaScript:;">加入社区</a>
                     <img class="qrcode animated fadeInDownPart" src="dist/img/qrcode.png" alt="二维码">
                 </div>
             </div>
@@ -102,7 +109,7 @@
 
 
         <!-- 核心问题 -->
-        <div class="section-part section-part-issues">
+        <div id="keyIssues" class="section-part section-part-issues">
             <div class="b8-container">
                 <div class="section-title-wrap">
                     <img class="section-title-icon" src="dist/img/icon_point.png" alt="">
@@ -110,20 +117,20 @@
                     <span class="section-title-en">KEY ISSUES</span>
                 </div>
                 <div class="b8-row key-issues-list">
-                    <div class="b8-col-lg-4 b8-col-xs-12">
-                        <div class="issues-item wow fadeInUp">
+                    <div class="b8-col-lg-4">
+                        <div id="issuesItem1" class="issues-item wow fadeInUp">
                             <img class="item-img" src="dist/img/issues_bit.png" alt="">
                             <p class="item-text">选什么币</p>
                         </div>
                     </div>
-                    <div class="b8-col-lg-4 b8-col-xs-12">
-                        <div class="issues-item wow fadeInUp" data-wow-delay=".1s">
+                    <div class="b8-col-lg-4">
+                        <div id="issuesItem2" class="issues-item wow fadeInUp" data-wow-delay=".1s">
                             <img class="item-img" src="dist/img/issues_buy.png" alt="">
                             <p class="item-text">什么时候买</p>
                         </div>
                     </div>
-                    <div class="b8-col-lg-4 b8-col-xs-12">
-                        <div class="issues-item wow fadeInUp" data-wow-delay=".2s">
+                    <div class="b8-col-lg-4">
+                        <div id="issuesItem3" class="issues-item wow fadeInUp" data-wow-delay=".2s">
                             <img class="item-img" src="dist/img/issues_sell.png" alt="">
                             <p class="item-text">什么时候卖</p>
                         </div>
@@ -135,21 +142,21 @@
         </div>
 
         <!-- 解决方案 -->
-        <div class="section-part section-part-solution">
+        <div id="solution" class="section-part section-part-solution">
             <div class="b8-container">
                 <div class="section-title-wrap">
                     <img class="section-title-icon" src="dist/img/icon_point.png" alt="">
                     <h2 class="section-title">解决方案</h2>
                     <span class="section-title-en">SOLUTION</span>
                 </div>
-                <img class="content-img" src="dist/img/section_solution.png" alt="解决方案">
+                <img class="content-img wow fadeInUp" src="dist/img/section_solution.png" alt="解决方案">
             </div>
             <p class="absolute-text">SOLUTIONS</p>
             <img class="absolute-img" src="dist/img/decoration_left.png" alt="">
         </div>
 
         <!-- 关于我们 -->
-        <div class="section-part section-part-about">
+        <div id="about" class="section-part section-part-about">
             <div class="b8-container">
                 <div class="section-title-wrap">
                     <img class="section-title-icon" src="dist/img/icon_point.png" alt="">
@@ -157,37 +164,29 @@
                     <span class="section-title-en">ABOUT US</span>
                 </div>
                 <ul class="introduced-list">
-                    <li class="introduced-item item-odd">
-                        <div class="item-icon ">
-                            <i class="icon icon-icon_code"></i>
-                        </div>
+                    <li class="introduced-item item-odd wow fadeInRight">
+                        <img class="item-icon" src="dist/img/icon_code.png" alt="">
                         <p class="item-text">
                             <strong>专业数据挖掘能力</strong>
                             <span>强大的研发实力，在数据挖掘方面积累了多年的经验</span>
                         </p>
                     </li>
-                    <li class="introduced-item item-even">
-                        <div class="item-icon ">
-                            <i class="icon icon-icon_person"></i>
-                        </div>
+                    <li class="introduced-item item-even wow fadeInRight" data-wow-delay=".1s">
+                        <img class="item-icon" src="dist/img/icon_person.png" alt="">
                         <p class="item-text">
                             <strong>顶尖市场研究人员</strong>
                             <span>顶级投行金融策略分析师，根据市场数据建立投资决策模型</span>
                         </p>
                     </li>
-                    <li class="introduced-item item-odd">
-                        <div class="item-icon ">
-                            <i class="icon icon-icon_team"></i>
-                        </div>
+                    <li class="introduced-item item-odd wow fadeInRight" data-wow-delay=".2s">
+                        <img class="item-icon" src="dist/img/icon_people.png" alt="">
                         <p class="item-text">
                             <strong>丰富的行业资源</strong>
                             <span>区块链相关行业顶尖人脉资源助力产品</span>
                         </p>
                     </li>
-                    <li class="introduced-item item-even">
-                        <div class="item-icon ">
-                            <i class="icon icon-icon_heart"></i>
-                        </div>
+                    <li class="introduced-item item-even wow fadeInRight" data-wow-delay=".3s">
+                        <img class="item-icon" src="dist/img/icon_heart.png" alt="">
                         <p class="item-text">
                             <strong>产品初心</strong>
                             <span>最重要的是我们的初心不变，时刻为用户创造价值而不断努力</span>
@@ -200,7 +199,7 @@
         </div>
 
         <!-- 加入社区 -->
-        <div class="section-part section-part-join">
+        <div id="joinUs" class="section-part section-part-join">
             <div class="b8-container">
                 <div class="section-title-wrap">
                     <img class="section-title-icon" src="dist/img/icon_point.png" alt="">
@@ -208,7 +207,7 @@
                     <span class="section-title-en">JOIN US</span>
                 </div>
                 <div class="b8-row join-content-wrap">
-                    <div class="b8-col-lg-7">
+                    <div class="b8-col-lg-7 b8-col-xs-12 wow fadeInLeft">
                         <h3 class="join-preferential-title">您将获得</h3>
                         <ul class="join-preferential">
                             <li class="preferential-item">
@@ -229,7 +228,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="b8-col-lg-5 text-right">
+                    <div class="b8-col-lg-5 b8-col-xs-12 qrcode-wrap wow fadeInRight">
                         <p class="absolute-text">JOIN US</p>
                         <img class="img-qrcode" src="dist/img/qrcode.png" alt="">
                     </div>
