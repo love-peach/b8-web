@@ -78,13 +78,17 @@
             transition: color .25s ease, font-size .25s ease;
 
         }
-        .active {
-            .nav-link {
-                color: #fdd623;
-                font-size: 20px;
-            }
+        .active.nav-link {
+            color: #fdd623;
+            font-size: 20px;
         }
     }
+    .nav-list-phone-wrap:hover {
+        .nav-list-phone {
+            display: block;
+        }
+    }
+
     .nav-list-phone {
         background-color: #1c1c1c;
         display: none;
@@ -98,6 +102,9 @@
             line-height: @navbarHeight * .8;
             border-top: 1px solid #333;
         }
+        .nav-link.active {
+            color: #ffd94a;
+        }
     }
 
     .nav-menu {
@@ -105,13 +112,10 @@
         top: 0;
         right: 0;
         font-size: 26px;
-        //height: 42px;
-        //width: 42px;
         text-align: center;
-        //line-height: 42px;
-        //padding: 1.5%;
-        padding-right: 10px;
         box-sizing: content-box;
+        line-height: 1;
+        padding: 9px;
         .icon-menu {
             display: inline-block;
             width: 24px;
@@ -124,9 +128,6 @@
                 margin-top: 6px;
             }
         }
-    }
-    .nav-menu:hover + .nav-list-phone {
-        display: block;
     }
 
     @media screen and (max-width: @screen-md) {
