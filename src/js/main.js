@@ -9,12 +9,16 @@ window.onload = function () {
     });
     wow.init();
 
+    var jsNavMenu = document.getElementById('jsNavMenu');
     var navListPc = document.getElementById('navListPc');
     var navListPcLink = navListPc.getElementsByTagName('a');
     var navListPhone = document.getElementById('navListPhone');
-    var navListPhoneLink = navListPc.getElementsByTagName('a');
+    var navListPhoneLink = navListPhone.getElementsByTagName('a');
     eventAttach(navListPcLink);
     eventAttach(navListPhoneLink);
+    jsNavMenu.onclick = function () {
+        navListPhone.style.display = 'block';
+    };
 
     var throttleScroll = throttle(function () {
         scrollHandler();
@@ -69,6 +73,7 @@ window.onload = function () {
             (function(index) {
                 links[i].onclick = function() {
                     scrollMove(anchorPointOffsetHeight[index] - 50, 300);
+                    navListPhone.style.display = 'none';
                 }
             })(i);
         }
